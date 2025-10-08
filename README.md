@@ -2,6 +2,10 @@
 
 A beautiful Terminal User Interface (TUI) for connecting to Azure VMs via SSH using passwordless authentication.
 
+## Disclaimer
+
+This project was created as an opportunity to learn Go. I make no promises that this is well written.
+
 ## Overview
 
 `ezazssh` is a wrapper around the Azure CLI that provides an intuitive, interactive interface for establishing SSH connections to your Azure virtual machines. Built with [Charm Bracelet's Bubbletea](https://github.com/charmbracelet/bubbletea), it offers a smooth and elegant terminal experience.
@@ -15,7 +19,7 @@ A beautiful Terminal User Interface (TUI) for connecting to Azure VMs via SSH us
 
 ## Tips
 - Press `W` to set your windows user if you are connecting to a windows VM
-- While selecting your subscription, use `D` to save it as the default the next time you load
+- While selecting your subscription, use `D` to save it as the default
 
 ## Prerequisites
 
@@ -23,6 +27,7 @@ A beautiful Terminal User Interface (TUI) for connecting to Azure VMs via SSH us
 - Active Azure subscription
 - Authenticated Azure CLI session (`az login`)
 - SSH extension installed `az extension add --name ssh`
+- [Azure VM](https://learn.microsoft.com/en-us/entra/identity/devices/howto-vm-sign-in-azure-ad-linux)/[Arc Machines](https://learn.microsoft.com/en-us/azure/azure-arc/servers/ssh-arc-overview?tabs=azure-cli) set up with SSH extension.
 
 ## Installation
 
