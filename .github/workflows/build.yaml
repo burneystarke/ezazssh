@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: gitea/runner-images:ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
