@@ -1,10 +1,9 @@
 # ezazssh
 
 A beautiful Terminal User Interface (TUI) for connecting to Azure VMs via SSH using passwordless authentication.
+## About
 
-## Disclaimer
-
-This project was created as an opportunity to learn Go. I make no promises that this is well written.
+Created as a learning project to explore Go and build something useful. It is probably poorly constructed. Contributions, feedback, and suggestions for improvement are always welcome!
 
 ## Overview
 
