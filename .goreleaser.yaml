@@ -1,0 +1,18 @@
+version: 2
+project_name: ezazssh
+builds:
+  - id: "ezazssh"
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+upx:
+  - enabled: true
+archives:
+  - name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format: binary
+    builds:
+      - ezazssh
