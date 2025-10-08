@@ -22,7 +22,7 @@ A beautiful Terminal User Interface (TUI) for connecting to Azure VMs via SSH us
 - [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) installed and configured
 - Active Azure subscription
 - Authenticated Azure CLI session (`az login`)
-- SSH access configured on your Azure VMs
+- SSH extension installed `az extension add --name ssh`
 
 ## Installation
 
@@ -74,10 +74,10 @@ To use passwordless SSH with your Azure VMs, ensure:
 
 ## Troubleshooting
 
-### "SSH connection fails?"
+### SSH connection fails?
+-Ensure you have installed the Azure CLI from [Microsoft's official guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+-Ensure you have installed the ssh extension `az extension add --name ssh`
+-Try connecting via the cli `az ssh vm --help` for more info
 
-Install the Azure CLI from [Microsoft's official guide](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
-Install the ssh extension `az extension add --name ssh`
-
-### "No items."
+### No items.
 You may need to select a different subscription, or login to az cli with `az login`
