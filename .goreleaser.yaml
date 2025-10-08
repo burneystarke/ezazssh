@@ -9,6 +9,13 @@ builds:
     goarch:
       - amd64
       - arm64
+    env:
+      - CGO_ENABLED=0  # Disable CGO for static compilation
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w  # Strip debug info to reduce size
+      - -extldflags "-static" 
 upx:
   - enabled: true
 archives:
