@@ -149,7 +149,7 @@ func (machine MachineInfo) SSHToMachine(windowsuser string) tea.Cmd {
 		extraopts += " --prefer-private-ip"
 	}
 	if machine.OS == "windows" {
-		extraopts += " --local-user " + windowsuser
+		extraopts += fmt.Sprintf(" --local-user \"%s\"", windowsuser)
 	}
 	var cmdstring string = fmt.Sprintf("az ssh %s --subscription %s -g %s -n %s %s", machinetype, machine.SubscriptionID, machine.ResourceGroup, machine.Name, extraopts)
 	if runtime.GOOS == "windows" {
