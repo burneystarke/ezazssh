@@ -24,7 +24,7 @@
 #            # You can run `nix flake update` to refresh the hash automatically
 #            sha256 = "sha256-d3IgW3eBlIR0+fSoBJljD3eZQg2VVP8OPfAibCjGhS4=";
 #          };
-          vendorHash = "sha256-5UqLDJEcw/F6xjiG8Bb3GtpGhmJS9muz/khPVvVPk38=";
+          vendorHash = "sha256-NTLXGC61axh/8MtfOIpKsk+ykTz+YkrLX4UCjddBlYw=";
           subPackages = [ "." ];
 
           meta = with pkgs.lib; {
