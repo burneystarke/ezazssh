@@ -65,13 +65,15 @@ func (m model) Init() tea.Cmd {
 
 func (m *model) SwitchView(v string, refresh bool) {
 	if v != m.view {
-		switch v {
-		case "machines":
-			m.views[v] = m.newMachineView(m.subscription)
-		case "subscriptions":
-			m.views[v] = m.newSubscriptionView(true)
-		case "setuser":
-			m.views[v] = m.newSetUserView()
+		if _, ok :=m.views[v];!ok || refresh  {
+			switch v {
+			case "machines":
+				m.views[v] = m.newMachineView(m.subscription)
+			case "subscriptions":
+				m.views[v] = m.newSubscriptionView(true)
+			case "setuser":
+				m.views[v] = m.newSetUserView()
+			}
 		}
 		if _, ok := m.views[v]; ok {
 			m.view = v
