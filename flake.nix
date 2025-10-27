@@ -14,17 +14,18 @@
         packages.ezazssh = pkgs.buildGoModule {
           pname = "ezazssh";
           version = "v${self.shortRev or "dev"}";
-
+          env.CGO_ENABLED = 0;
+          ldflags = ["-w" "-s" "-extldflags \"-static\"" ];
           src = pkgs.fetchFromGitHub {
             owner = "burneystarke";
             repo = "ezazssh";
             rev = self.rev or "main";
             # You can run `nix flake update` to refresh the hash automatically
-            sha256 = lib.fakeSha256;
+            sha256 = "sha256-d3IgW3eBlIR0+fSoBJljD3eZQg2VVP8OPfAibCjGhS4=";
           };
-
+#          proxyVendor=true;
           # If you use Go modules, this should work fine.
-          vendorSha256 = null;
+          vendorHash = null;
 
           # If your main package is not in ./cmd/ezazssh, adjust this path
           subPackages = [ "." ];
