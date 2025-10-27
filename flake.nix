@@ -1,0 +1,46 @@
+{
+  description = "A simple flake for building ezazssh, a Go-based CLI tool.";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in {
+        packages.ezazssh = pkgs.buildGoModule {
+          pname = "ezazssh";
+          version = "v${self.shortRev or "dev"}";
+
+          src = pkgs.fetchFromGitHub {
+            owner = "burneystarke";
+            repo = "ezazssh";
+            rev = self.rev or "main";
+            # You can run `nix flake update` to refresh the hash automatically
+            sha256 = lib.fakeSha256;
+          };
+
+          # If you use Go modules, this should work fine.
+          vendorSha256 = null;
+
+          # If your main package is not in ./cmd/ezazssh, adjust this path
+          subPackages = [ "." ];
+
+          meta = with pkgs.lib; {
+            description = "Azure SSH utility written in Go";
+            homepage = "https://github.com/burneystarke/ezazssh";
+            license = licenses.mit;
+            maintainers = [ maintainers.yourGithubUsername ];
+            platforms = platforms.all;
+          };
+        };
+
+        defaultPackage = self.packages.${system}.ezazssh;
+        defaultApp = flake-utils.lib.mkApp {
+          drv = self.packages.${system}.ezazssh;
+        };
+      });
+}
