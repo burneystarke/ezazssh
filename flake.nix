@@ -16,18 +16,18 @@
           version = "v${self.shortRev or "dev"}";
           env.CGO_ENABLED = 0;
           ldflags = ["-w" "-s" "-extldflags \"-static\"" ];
-          src = pkgs.fetchFromGitHub {
-            owner = "burneystarke";
-            repo = "ezazssh";
-            rev = self.rev or "main";
-            # You can run `nix flake update` to refresh the hash automatically
-            sha256 = "sha256-d3IgW3eBlIR0+fSoBJljD3eZQg2VVP8OPfAibCjGhS4=";
+          src = builtins.fetchGit {
+            url = self;
+            rev = self.rev;
           };
-#          proxyVendor=true;
-          # If you use Go modules, this should work fine.
-          vendorHash = null;
-
-          # If your main package is not in ./cmd/ezazssh, adjust this path
+#          src = pkgs.fetchFromGitHub {
+#            owner = "burneystarke";
+#            repo = "ezazssh";
+#            rev = self.rev or "main";
+#            # You can run `nix flake update` to refresh the hash automatically
+#            sha256 = "sha256-d3IgW3eBlIR0+fSoBJljD3eZQg2VVP8OPfAibCjGhS4=";
+#          };
+          vendorHash = "sha256-5UqLDJEcw/F6xjiG8Bb3GtpGhmJS9muz/khPVvVPk38=";
           subPackages = [ "." ];
 
           meta = with pkgs.lib; {
