@@ -16,10 +16,7 @@
           version = "v${self.shortRev or "dev"}";
           env.CGO_ENABLED = 0;
           ldflags = ["-w" "-s" "-extldflags \"-static\"" ];
-          src = builtins.fetchGit {
-            url = self;
-            rev = self.rev;
-          };
+          src = self;
 #          src = pkgs.fetchFromGitHub {
 #            owner = "burneystarke";
 #            repo = "ezazssh";
